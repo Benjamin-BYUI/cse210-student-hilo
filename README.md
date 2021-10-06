@@ -35,4 +35,6 @@ root                    (project root folder)
 
 ## Authors
 ---
-Benjamin Heydorn bheydorn@byui.edu
+Benjamin Heydorn bheydorn@byui.
+
+Samuel Benson Samuelgbens@gmail.com
