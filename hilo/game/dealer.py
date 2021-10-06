@@ -27,6 +27,7 @@ class Dealer:
         Args:
             self (Dealer): an instance of Dealer.
         """
+        print(f"The card is: {self.player.current_card}")
         while self.keep_playing:
             self.get_guess()
             self.do_score_update()
