@@ -60,6 +60,7 @@ class Dealer:
             self (Dealer): An instance of Dealer.
         """
         print(f"\nYou guessed: {self.player.guess}")
+        print(f"\The next card was: {self.player.guess}")
         print(f"Your score is: {self.score}")
         if self.score > 0:
             choice = input("Deal again? [y/n] ")
