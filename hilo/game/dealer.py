@@ -28,20 +28,20 @@ class Dealer:
             self (Dealer): an instance of Dealer.
         """
         while self.keep_playing:
-            self.get_inputs()
-            self.do_updates()
+            self.get_guess()
+            self.do_score_update()
             self.do_outputs()
 
-    def get_inputs(self):
+    def get_guess(self):
         """Gets the inputs at the beginning of each round of play. In this case,
-        that means throwing the dice.
+        that means the player's guess.
 
         Args:
             self (Dealer): An instance of Dealer.
         """
-        self.player.throw_dice()
+        self.player.get_guess()
         
-    def do_updates(self):
+    def do_score_update(self):
         """Updates the important game information for each round of play. In 
         this case, that means updating the score.
 
@@ -53,15 +53,15 @@ class Dealer:
         
     def do_outputs(self):
         """Outputs the important game information for each round of play. In 
-        this case, that means the dice that were rolled and the score.
+        this case, that means the card that was dealt and the score.
 
         Args:
             self (Dealer): An instance of Dealer.
         """
-        print(f"\nYou rolled: {self.player.dice}")
+        print(f"\nYou guessed: {self.player.guess}")
         print(f"Your score is: {self.score}")
-        if self.player.can_throw():
-            choice = input("Roll again? [y/n] ")
+        if self.score > 0:
+            choice = input("Deal again? [y/n] ")
             self.keep_playing = (choice == "y")
         else:
             self.keep_playing = False
