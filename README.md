@@ -38,3 +38,5 @@ root                    (project root folder)
 Benjamin Heydorn bheydorn@byui.
 
 Samuel Benson Samuelgbens@gmail.com
+
+Sam Palmer fish23slap@gmail.com
