@@ -1,6 +1,6 @@
-from game.thrower import Thrower
+from game.player import Player
 
-class Director:
+class Dealer:
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to keep track of the score and control the 
     sequence of play.
@@ -8,24 +8,24 @@ class Director:
     Attributes:
         keep_playing (boolean): Whether or not the player wants to keep playing.
         score (number): The total number of points earned.
-        thrower (Thrower): An instance of the class of objects known as Thrower.
+        player (Player): An instance of the class of objects known as Player.
     """
 
     def __init__(self):
         """The class constructor.
         
         Args:
-            self (Director): an instance of Director.
+            self (Dealer): an instance of Dealer.
         """
         self.keep_playing = True
-        self.score = 0
-        self.thrower = Thrower()
+        self.score = 300
+        self.player = Player()
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
         
         Args:
-            self (Director): an instance of Director.
+            self (Dealer): an instance of Dealer.
         """
         while self.keep_playing:
             self.get_inputs()
@@ -37,18 +37,18 @@ class Director:
         that means throwing the dice.
 
         Args:
-            self (Director): An instance of Director.
+            self (Dealer): An instance of Dealer.
         """
-        self.thrower.throw_dice()
+        self.player.throw_dice()
         
     def do_updates(self):
         """Updates the important game information for each round of play. In 
         this case, that means updating the score.
 
         Args:
-            self (Director): An instance of Director.
+            self (Dealer): An instance of Dealer.
         """
-        points = self.thrower.get_points()
+        points = self.player.get_points()
         self.score += points
         
     def do_outputs(self):
@@ -56,11 +56,11 @@ class Director:
         this case, that means the dice that were rolled and the score.
 
         Args:
-            self (Director): An instance of Director.
+            self (Dealer): An instance of Dealer.
         """
-        print(f"\nYou rolled: {self.thrower.dice}")
+        print(f"\nYou rolled: {self.player.dice}")
         print(f"Your score is: {self.score}")
-        if self.thrower.can_throw():
+        if self.player.can_throw():
             choice = input("Roll again? [y/n] ")
             self.keep_playing = (choice == "y")
         else:
