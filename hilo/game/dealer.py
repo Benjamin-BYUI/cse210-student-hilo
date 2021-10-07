@@ -20,6 +20,7 @@ class Dealer:
         self.keep_playing = True
         self.score = 300
         self.player = Player()
+        self.last_guess = None
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -40,7 +41,7 @@ class Dealer:
         Args:
             self (Dealer): An instance of Dealer.
         """
-        self.player.get_guess()
+        self.last_guess = self.player.get_guess()
         
     def do_score_update(self):
         """Updates the important game information for each round of play. In 
@@ -49,7 +50,7 @@ class Dealer:
         Args:
             self (Dealer): An instance of Dealer.
         """
-        points = self.player.get_points()
+        points = self.player.get_points(self.last_guess)
         self.score += points
         
     def do_outputs(self):
