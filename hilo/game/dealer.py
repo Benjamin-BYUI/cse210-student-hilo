@@ -21,6 +21,7 @@ class Dealer:
         self.score = 300
         self.player = Player()
         self.last_guess = None
+        self.next_card = None
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -28,8 +29,8 @@ class Dealer:
         Args:
             self (Dealer): an instance of Dealer.
         """
-        print(f"The card is: {self.player.current_card}")
         while self.keep_playing:
+            print(f"The card is: {self.player.current_card}")
             self.get_guess()
             self.do_score_update()
             self.do_outputs()
@@ -50,7 +51,7 @@ class Dealer:
         Args:
             self (Dealer): An instance of Dealer.
         """
-        points = self.player.get_points(self.last_guess)
+        points, self.next_card = self.player.get_points(self.last_guess)
         self.score += points
         
     def do_outputs(self):
@@ -60,11 +61,12 @@ class Dealer:
         Args:
             self (Dealer): An instance of Dealer.
         """
-        print(f"\nYou guessed: {self.player.guess}")
-        print(f"\The next card was: {self.player.guess}")
+        print(f"Next card was: {self.next_card}")
         print(f"Your score is: {self.score}")
         if self.score > 0:
-            choice = input("Deal again? [y/n] ")
+            choice = input("Keep playing? [y/n] ")
+            print()
             self.keep_playing = (choice == "y")
         else:
+            print("Game over!")
             self.keep_playing = False
