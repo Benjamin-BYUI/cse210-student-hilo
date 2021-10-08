@@ -34,6 +34,7 @@ class Dealer:
             self.get_guess()
             self.do_score_update()
             self.do_outputs()
+        print("Thanks for playing!")
 
     def get_guess(self):
         """Gets the inputs at the beginning of each round of play. In this case,
@@ -65,8 +66,8 @@ class Dealer:
         print(f"Your score is: {self.score}")
         if self.score > 0:
             choice = input("Keep playing? [y/n] ")
-            print()
             self.keep_playing = (choice == "y")
         else:
             print("Game over!")
             self.keep_playing = False
+        print()
